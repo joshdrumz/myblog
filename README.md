@@ -13,6 +13,7 @@ This project assumes you have at least Python 3.6 or later and NodeJS/npm instal
 ## Built With
 
 - [Django](https://www.djangoproject.com/) - Python web framework.
+- [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor) - A WYSIWYG text editor used for blogging and code snippets.
 - [Fontawesome](https://fontawesome.com/) - Icons.
 - [Bulma](https://bulma.io/) - CSS framework for styling.
 - [bulma-toast](https://rfoel.github.io/bulma-toast/) - Bulma's notification component turned into toasts.
