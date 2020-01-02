@@ -1,0 +1,58 @@
+{% extends "main/header.html" %}
+
+{% load filters %}
+
+{% block content %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-left">
+                {{form.username|addclass:'input'}}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
+            <p class="help is-size-6">Required. 150 characters or fewer. Letters, digits, and @ | . | + | - | _ only.</p>
+        </div>
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left">
+                {{form.email|addclass:'input'}}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
+            <p class="help is-size-6">Required. Must follow conventional email formatting.</p>
+        </div>
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left">
+                {{form.password1|addclass:'input'}}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+            <p class="help is-size-6">Your password can't be too similar to your other personal information.</p>
+            <p class="help is-size-6">Your password must contain at least 8 characters.</p>
+            <p class="help is-size-6">Your password can't be a commonly used password.</p>
+            <p class="help is-size-6">Your password can't be entirely numeric.</p>
+        </div>
+        <div class="field">
+            <label class="label">Confirm Password</label>
+            <div class="control has-icons-left">
+                {{form.password2|addclass:'input'}}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+            <p class="help is-size-6">Enter the same password as before, for verification.</p>
+        </div>
+        <button type="submit" class="button is-info">Sign up</button>
+    </form>
+    <div class="is-relative">
+        If you already have an account, <a href="/login" target="_blank"><strong>login</strong></a> instead.
+    </div>
+{% endblock %}

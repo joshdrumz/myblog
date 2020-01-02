@@ -1,0 +1,61 @@
+{% if messages %}
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+            <script>
+                bulmaToast.toast({ 
+                    message: '{{msg}}',
+                    type: 'is-success',
+                    duration: 5000,
+                    dismissible: true,
+                    pauseOnHover: true,
+                    animate: { 
+                        in: 'fadeIn', 
+                        out: 'fadeOut'
+                    }
+                });
+            </script>
+        {% elif msg.tags == 'info' %}
+            <script>
+                bulmaToast.toast({ 
+                    message: '{{msg}}',
+                    type: 'is-info',
+                    duration: 5000,
+                    dismissible: true,
+                    pauseOnHover: true,
+                    animate: { 
+                        in: 'fadeIn', 
+                        out: 'fadeOut'
+                    }
+                });
+            </script>
+        {% elif msg.tags == 'warning' %}
+            <script>
+                bulmaToast.toast({ 
+                    message: '{{msg}}',
+                    type: 'is-warning',
+                    duration: 5000,
+                    dismissible: true,
+                    pauseOnHover: true,
+                    animate: { 
+                        in: 'fadeIn', 
+                        out: 'fadeOut'
+                    }
+                });
+            </script>
+        {% elif msg.tags == 'error' %}
+            <script>
+                bulmaToast.toast({ 
+                    message: '{{msg}}',
+                    type: 'is-danger',
+                    duration: 5000,
+                    dismissible: true,
+                    pauseOnHover: true,
+                    animate: { 
+                        in: 'fadeIn', 
+                        out: 'fadeOut'
+                    }
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
