@@ -1,0 +1,18 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+    {% for cat in categories %}
+        <div class="container">
+            <br>
+            <div class="card" style="background-color: turquoise;">
+                <a href="{{cat.slug}}" style="color:#000">
+                    <div class="card-content">
+                        <p class="title">{{cat.category}}</p>
+                        <p class="subtitle">{{cat.summary}}</p>
+                        <hr>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

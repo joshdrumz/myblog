@@ -1,0 +1,18 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+    {% for tut, partone in part_ones.items %}
+        <div class="container">
+            <br>
+            <div class="card" style="background-color: turquoise;">
+                <a href="{{partone}}" style="color:#000">
+                    <div class="card-content">
+                        <p class="title">{{tut.series}}</p>
+                        <p class="subtitle">{{tut.summary}}</p>
+                        <hr>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

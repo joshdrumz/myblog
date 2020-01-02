@@ -3,28 +3,30 @@
 {% load filters %}
 
 {% block content %}
-    <br>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left">
-                {{form.username|addclass:'input'}}
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
+    <div class="container is-fluid">
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-left">
+                    {{form.username|addclass:'input'}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label class="label">Password</label>
-            <div class="control has-icons-left">
-                {{form.password|addclass:'input'}}
-                <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                </span>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                    {{form.password|addclass:'input'}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </div>
             </div>
-        </div>
-        <button type="submit" class="button is-info">Login</button>
-    </form>
-    If you don't already have an account, <a href="/register" target="_blank"><strong>register</strong></a> instead.
+            <button type="submit" class="button is-info">Login</button>
+        </form>
+        If you don't already have an account, <a href="/register" target="_blank"><strong>register</strong></a> instead.
+    </div>
 {% endblock %}

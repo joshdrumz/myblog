@@ -1,0 +1,26 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+    {% comment %} <br>
+        <div class="card" style="background-color: turquoise;">
+            <div class="card-content">
+                <p class="title">{{tutorial.title}}</p>
+                <p class="subtitle">{{tutorial.published}}</p>
+                <hr>
+                <p>{{tutorial.content|safe}}</p>
+            </div>
+        </div>
+    <br> {% endcomment %}
+
+    <section class="hero is-medium is-dark is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">{{tutorial.title}}</h1>
+                <h2 class="subtitle has-text-centered">Last updated on {{tutorial.published}}</h2>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        {{tutorial.content|safe}}
+    </div>
+{% endblock %}

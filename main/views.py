@@ -3,14 +3,14 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .models import Tutorial
+from .models import Tutorial, TutorialSeries, TutorialCategory
 from .forms import NewUserForm
 
 # Create your views here.
 
 
 def homepage(request):
-    return render(request, 'main/home.html', {'tutorials': Tutorial.objects.all()})
+    return render(request, 'main/categories.html', {'categories': TutorialCategory.objects.all()})
 
 
 def register(request):
@@ -55,3 +55,24 @@ def login_request(request):
 
     form = AuthenticationForm()
     return render(request, 'main/login.html', {'form': form})
+
+
+def single_slug(request, single_slug):
+    categories = [c.slug for c in TutorialCategory.objects.all()]
+    if single_slug in categories:
+        matching_series = TutorialSeries.objects.filter(
+            category__slug=single_slug)
+        series_urls = {}
+        for m in matching_series.all():
+            part_one = Tutorial.objects.filter(
+                series__series=m.series).earliest('published')
+            series_urls[m] = part_one.slug
+        return render(request, 'main/category.html', {'part_ones': series_urls})
+
+    tutorials = [t.slug for t in Tutorial.objects.all()]
+    if single_slug in tutorials:
+        this_tutorial = Tutorial.objects.get(slug=single_slug)
+        return render(request, 'main/tutorial.html', {'tutorial': this_tutorial})
+
+    HttpResponse.status_code = 404
+    return HttpResponse(f'{single_slug} does not correspond to anything.')

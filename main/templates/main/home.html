@@ -2,15 +2,17 @@
 
 {% block content %}
     {% for tut in tutorials %}
-        <br>
-        <div class="card" style="background-color: turquoise;">
-            <div class="card-content">
-                <p class="title">{{tut.title}}</p>
-                <p class="subtitle">{{tut.published}}</p>
-                <hr>
-                <p>{{tut.description}}</p>
+        <div class="container">
+            <br>
+            <div class="card" style="background-color: turquoise;">
+                <div class="card-content">
+                    <p class="title">{{tut.title}}</p>
+                    <p class="subtitle">{{tut.published}}</p>
+                    <hr>
+                    <p>{{tut.description}}</p>
+                </div>
             </div>
+            <br>
         </div>
-        <br>
     {% endfor %}
 {% endblock %}

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Tutorial, TutorialSeries, TutorialCategory
 from django.db import models
-from ckeditor.widgets import CKEditorWidget
+# from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 # Register your models here.
 
@@ -15,7 +16,7 @@ class TutorialAdmin(admin.ModelAdmin):
     )
 
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget()}
+        models.TextField: {'widget': CKEditorUploadingWidget()}
     }
 
 
