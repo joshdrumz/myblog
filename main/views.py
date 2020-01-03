@@ -72,7 +72,15 @@ def single_slug(request, single_slug):
     tutorials = [t.slug for t in Tutorial.objects.all()]
     if single_slug in tutorials:
         this_tutorial = Tutorial.objects.get(slug=single_slug)
-        return render(request, 'main/tutorial.html', {'tutorial': this_tutorial})
+        tutorials_from_series = Tutorial.objects.filter(
+            series__series=this_tutorial.series).order_by('published')
+        this_tutorial_index = list(tutorials_from_series).index(this_tutorial)
+        context = {
+            'tutorial': this_tutorial,
+            'sidebar': tutorials_from_series,
+            'this_tutorial_index': this_tutorial_index
+        }
+        return render(request, 'main/tutorial.html', context)
 
     HttpResponse.status_code = 404
     return HttpResponse(f'{single_slug} does not correspond to anything.')

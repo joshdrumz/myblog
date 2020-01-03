@@ -129,8 +129,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_UPLOAD_PATH = "ckupload/"
-
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -139,6 +139,8 @@ CKEDITOR_CONFIGS = {
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
+        # 'removePlugins': 'stylesheetparser',
+        # 'allowedContent': True,
         'toolbar_YourCustomToolbarConfig': [
             {'name': 'document', 'items': [
                 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
@@ -167,8 +169,9 @@ CKEDITOR_CONFIGS = {
                 # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
-                'CodeSnippet'
-            ]},
+                'CodeSnippet',
+                'Youtube'
+            ], },
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
@@ -184,7 +187,8 @@ CKEDITOR_CONFIGS = {
             # your extra plugins here
             'div',
             'codesnippet',
-            'widget',
+            'youtube',
+            'widget'
         ]),
         'codeSnippet_theme': 'railscasts'
     }

@@ -11,16 +11,39 @@
             </div>
         </div>
     <br> {% endcomment %}
-
-    <section class="hero is-medium is-dark is-bold">
+    <section class="columns hero is-medium is-dark is-bold">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title has-text-centered">{{tutorial.title}}</h1>
                 <h2 class="subtitle has-text-centered">Last updated on {{tutorial.published}}</h2>
             </div>
         </div>
+    </section>  
+
+    <section class="main-content columns">
+        <aside class="column is-2 is-narrow-mobile section is-hidden-mobile">
+            <p class="menu-label is-hidden-touch">Other tutorials in this series</p>
+                {% for tutorial in sidebar %}
+                <ul class="menu-list">
+                    {% if forloop.counter0 == this_tutorial_index %}
+                        <li>
+                            <a class="is-active">
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span> {{tutorial.title}}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/{{tutorial.slug}}">
+                                {{tutorial.title}}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% endfor %}
+        </aside>
+        <div class="container">
+            {{tutorial.content|safe}}
+        </div>
     </section>
-    <div class="container">
-        {{tutorial.content|safe}}
-    </div>
+    
 {% endblock %}
