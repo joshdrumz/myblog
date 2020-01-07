@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, render_to_response
+from django.http import HttpResponse, Http404
+from django.template import RequestContext
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -82,5 +83,12 @@ def single_slug(request, single_slug):
         }
         return render(request, 'main/tutorial.html', context)
 
+    # HttpResponse.status_code = 404
+    # return HttpResponse(f'{single_slug} does not correspond to anything.')
+    # return bad_request(request)
+
+
+# HTTP Error 404 (handles any bad request)
+def bad_request(request, exception):
     HttpResponse.status_code = 404
-    return HttpResponse(f'{single_slug} does not correspond to anything.')
+    return render(request, 'main/404.html', locals())

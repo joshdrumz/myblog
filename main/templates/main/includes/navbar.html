@@ -1,7 +1,6 @@
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            {% comment %} <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> {% endcomment %}
             <i class="fas fa-code fa-2x has-text-dark"></i>
         </a>
 
@@ -18,8 +17,8 @@
             Home
         </a>
 
-        <a class="navbar-item">
-            Documentation
+        <a class="navbar-item" href="/about/">
+            About
         </a>
 
         <a class="navbar-item" href="https://www.linkedin.com/in/josh-arrants/" target="_blank">
@@ -60,14 +59,14 @@
                         <a class="button is-warning" href="/">
                             <strong class="has-text-black">Welcome {{user.username}}</strong>
                         </a>
-                        <a class="button is-light" href="/logout">
+                        <a class="button is-light" href="/logout/">
                             <strong>Logout</strong>
                         </a>
                     {% else %}
-                        <a class="button is-primary" href="/register">
+                        <a class="button is-primary" href="/register/">
                             <strong class="has-text-black">Sign up</strong>
                         </a>
-                        <a class="button is-light" href="/login">
+                        <a class="button is-light" href="/login/">
                             <strong>Login</strong>
                         </a>
                     {% endif %}

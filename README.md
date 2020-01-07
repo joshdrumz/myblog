@@ -23,7 +23,7 @@ This project assumes you have at least Python 3.6 or later and NodeJS/npm instal
 
 - **Josh Arrants** - [joshdrumz](https://github.com/joshdrumz)
 
-See the list of [contributors](https://github.com/CSCapstone2019/WebDoctor/contributors) who participated in this project.
+See the list of [contributors](https://github.com/joshdrumz/myblog/contributors) who participated in this project.
 
 ## License
 
