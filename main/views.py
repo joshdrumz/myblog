@@ -14,6 +14,10 @@ def homepage(request):
     return render(request, 'main/categories.html', {'categories': TutorialCategory.objects.all()})
 
 
+def about(request):
+    return render(request, 'main/about.html', {})
+
+
 def register(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
@@ -55,7 +59,7 @@ def login_request(request):
             messages.error(request, 'Invalid username or password')
 
     form = AuthenticationForm()
-    return render(request, 'main/login.html', {'form': form})
+    return render(request, 'main/login2.html', {'form': form})
 
 
 def single_slug(request, single_slug):
@@ -83,8 +87,8 @@ def single_slug(request, single_slug):
         }
         return render(request, 'main/tutorial.html', context)
 
-    # HttpResponse.status_code = 404
-    # return HttpResponse(f'{single_slug} does not correspond to anything.')
+    HttpResponse.status_code = 404
+    return HttpResponse(f'{single_slug} does not correspond to anything.')
     # return bad_request(request)
 
 

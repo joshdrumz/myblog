@@ -9,8 +9,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/railscasts.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
     <script type="text/javascript" src="{% static 'bulma-toast/dist/bulma-toast.min.js' %}"></script>
+    {% block styles %}
+    {% endblock %}
     <script>hljs.initHighlightingOnLoad();</script>
     <title>Blog</title>
 </head>
