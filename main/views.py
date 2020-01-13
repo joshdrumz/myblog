@@ -94,5 +94,5 @@ def single_slug(request, single_slug):
 
 # HTTP Error 404 (handles any bad request)
 def error_404(request, exception):
-    data = {}
-    return render(request, 'main/404.html', data)
+    HttpResponse.status_code = 404
+    return render(request, 'main/404.html', {})
