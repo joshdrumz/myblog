@@ -87,12 +87,12 @@ def single_slug(request, single_slug):
         }
         return render(request, 'main/tutorial.html', context)
 
-    HttpResponse.status_code = 404
+    # HttpResponse.status_code = 404
     return HttpResponse(f'{single_slug} does not correspond to anything.')
     # return bad_request(request)
 
 
 # HTTP Error 404 (handles any bad request)
-def bad_request(request, exception):
-    HttpResponse.status_code = 404
-    return render(request, 'main/404.html', locals())
+def error_404(request, exception):
+    data = {}
+    return render(request, 'main/404.html', data)

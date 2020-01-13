@@ -28,7 +28,7 @@ DEBUG = True
 if DEBUG is False:
     ALLOWED_HOSTS = ['127.0.0.1']
 
-if DEBUG is True:
+if DEBUG:
     ALLOWED_HOSTS = []
 
 # Application definition
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'myblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +120,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+APPEND_SLASH = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -127,7 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = ''
-STATICFILES_DIRS = (os.path.join('static'), )
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -173,8 +177,7 @@ CKEDITOR_CONFIGS = {
                 # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
-                'CodeSnippet',
-                'Youtube'
+                'CodeSnippet'
             ], },
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
@@ -191,7 +194,6 @@ CKEDITOR_CONFIGS = {
             # your extra plugins here
             'div',
             'codesnippet',
-            'youtube',
             'widget'
         ]),
         'codeSnippet_theme': 'railscasts'
