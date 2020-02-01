@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.db.models import Q
 from .models import Tutorial, TutorialSeries, TutorialCategory
-from .forms import NewUserForm, CommentForm
+from .forms import NewUserForm
 
 # Create your views here.
 
@@ -100,32 +100,6 @@ def single_slug(request, single_slug):
     # HttpResponse.status_code = 404
     return HttpResponse(f'{single_slug} does not correspond to anything.')
     # return bad_request(request)
-
-
-def tutorial_detail(request, slug):
-    tutorial = get_object_or_404(Tutorial, slug=slug)
-    comments = tutorial.comments.filter(approved=True)
-    new_comment = None
-    # Comment posted
-    if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            # Creates the Comment object but will not save it to DB yet
-            new_comment = comment_form.save(commit=False)
-            # Assign current tutorial to the comment
-            new_comment.tutorial = tutorial
-            # Save the comment to DB
-            new_comment.save()
-    else:
-        comment_form = CommentForm()
-
-    context = {
-        'comments': comments,
-        'new_comment': new_comment,
-        'comment_form': comment_form
-    }
-
-    return render(request, 'main/tutorial.html', context)
 
 
 def get_tutorial_queryset(query=None):

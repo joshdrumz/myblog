@@ -44,24 +44,26 @@
         <div class="container">
             {{tutorial.content|safe}}
         </div>
-        {% for c in comments %}
-            {{c.name}}
-            {{c.created_on}}
-            {{c.body|linebreaks}}
-        {% endfor %}
-        {% if new_comment %}
-            <div class="notification is-warning">
-                <button class="delete"></button>
-                Your comment is awaiting moderation
-            </div>
-        {% else %}
-            <h3>Leave a comment!</h3>
-            <form method="POST">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <button type="submit" class="button is-primary">Submit</button>
-            </form>
-        {% endif %}
+        {% comment %} <div class="is-hidden-tablet">
+            {% for c in comments %}
+                {{c.name}}
+                {{c.created_on}}
+                {{c.body|safe}}
+            {% endfor %}
+            {% if new_comment %}
+                <div class="notification is-warning">
+                    <button class="delete"></button>
+                    Your comment is awaiting moderation
+                </div>
+            {% else %}
+                <h3>Leave a comment!</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit" class="button is-primary">Submit</button>
+                </form>
+            {% endif %}
+        </div> {% endcomment %}
     </section>
     
 {% endblock %}
