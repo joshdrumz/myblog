@@ -1,18 +1,67 @@
 {% extends "main/header.html" %}
 
 {% block content %}
-    {% for cat in categories %}
+    {% comment %} <section class="section cards">
         <div class="container">
-            <br>
-            <div class="card" style="background-color: turquoise;">
-                <a href="{{cat.slug}}" style="color:#000">
-                    <div class="card-content">
-                        <p class="title">{{cat.category}}</p>
-                        <p class="subtitle">{{cat.summary}}</p>
-                        <hr>
+            <div class="columns is-multiline is-mobile is-centered is-variable is-3">
+            {% for cat in categories %}
+                <div class="card column is-narrow" style="background-color: turquoise;">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="/media/{{cat.image}}" alt="{{cat.image_alt}}">
+                        </figure>
                     </div>
-                </a>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">{{cat.category}}</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            {{cat.summary}}
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <a href="{{cat.slug}}" class="button is-info">View</a>
+                        </p>
+                    </footer>
+                </div>
+                {% endfor %}
             </div>
         </div>
-    {% endfor %}
+    </section> {% endcomment %}
+
+
+    <div class="container">
+        <br>
+        <div class="row columns">
+            {% for cat in categories %}
+                <div class="column is-one-third">
+                    <div class="card large">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="/media/{{cat.image}}" alt="{{cat.image_alt}}">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">{{cat.category}}</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                {{cat.summary}}
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="{{cat.slug}}" class="button is-info">View</a>
+                            </p>
+                        </footer>
+                    </div>  
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

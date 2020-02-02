@@ -9,6 +9,9 @@ class TutorialCategory(models.Model):
     category = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='uploads/',
+                              default=None, blank=True, null=True)
+    image_alt = models.CharField(max_length=200, default='')
 
     class Meta:
         verbose_name_plural = 'Categories'

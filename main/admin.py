@@ -20,6 +20,12 @@ class TutorialAdmin(admin.ModelAdmin):
     }
 
 
+class TutorialCategoryAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('')
+    )
+
+
 admin.site.register(TutorialSeries)
 admin.site.register(TutorialCategory)
 admin.site.register(Tutorial, TutorialAdmin)

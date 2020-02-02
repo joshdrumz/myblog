@@ -24,6 +24,18 @@ def homepage(request):
     return render(request, 'main/categories.html', context)
 
 
+def blog(request):
+    context = {}
+
+    query = ''
+    if request.GET:
+        query = request.GET['q']
+        context['query'] = str(query)
+
+    context['categories'] = TutorialCategory.objects.all()
+    return render(request, 'main/categories.html', context)
+
+
 def about(request):
     return render(request, 'main/about.html', {})
 

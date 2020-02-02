@@ -1,4 +1,4 @@
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
             <i class="fas fa-code fa-2x has-text-dark"></i>
@@ -13,11 +13,14 @@
 
     <div id="navMenu" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item is-active" href="/">
+            <a class="navbar-item" href="/">
                 Home
             </a>
             <a class="navbar-item" href="/about/">
                 About
+            </a>
+            <a class="navbar-item" href="/blog/">
+                Blog
             </a>
             <a class="navbar-item" href="https://www.linkedin.com/in/josh-arrants/" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
@@ -84,10 +87,12 @@
 
 <script>
     $(document).ready(function() {
-        $.each($('#navMenu').find('a'), function() {
-            $(this).toggleClass('is-active', 
-            window.location.pathname.indexOf($(this).attr('href')) > -1);
-        }); 
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+        });
     });
 </script>
 
